@@ -1,0 +1,59 @@
+# Alura Album - Copa do Mundo Tech
+
+Este projeto é um álbum interativo em estilo "flip book" construído com HTML, CSS e JavaScript. Ele simula um álbum de figurinhas com página de abertura, navegação através de setas, visualização do conteúdo em páginas duplas e suporte para carregamento dinâmico de imagens via API.
+
+## Arquivos principais
+
+- `index.html`
+  - Estrutura principal do álbum.
+  - Contém o layout das páginas, a capa do álbum, as páginas internas com slots de figurinha e a contracapa.
+  - Importa o CSS de estilo e o JavaScript de lógica.
+
+- `style.css`
+  - Define a aparência visual do álbum.
+  - Inclui o design das páginas, animações, estilo dos botões de navegação e dos slots de figurinha.
+  - Garante responsividade para diferentes tamanhos de tela.
+
+- `app.js`
+  - Controla a funcionalidade do álbum.
+  - Inicializa o efeito de virada de página usando a biblioteca PageFlip.
+  - Habilita navegação por setas e teclado.
+  - Implementa carregamento dinâmico de figurinhas a partir de uma API backend.
+  - Aciona efeitos sonoros de página quando o álbum é virado.
+
+## Funcionalidades
+
+- Navegação em livro com efeito de virar página.
+- Controle de som para ativar/desativar efeitos sonoros.
+- Busca de figurinhas por API para preencher slots automaticamente.
+- Design responsivo e visual rico com temas e efeitos de animação.
+
+## Uso
+
+### Iniciar o backend
+
+O backend usa FastAPI e Uvicorn. No terminal, a partir da pasta do projeto, execute:
+
+```powershell
+cd Backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install fastapi uvicorn
+python -m uvicorn main:app --reload
+```
+
+Se o ambiente virtual já existir, basta ativá-lo e iniciar o Uvicorn:
+
+```powershell
+cd Backend
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn main:app --reload
+```
+
+A API ficará disponível em `http://localhost:8000`; a documentação interativa fica em `http://localhost:8000/docs`. Mantenha o terminal aberto enquanto usar o álbum. O frontend já aponta para esse endereço em `API_BASE_URL`.
+
+### Abrir o álbum
+
+Abra `Frontend/index.html` em um navegador (ou use a extensão Live Server do VS Code). Com o backend em execução, as figurinhas serão carregadas pela API.
+
+Use as setas na tela ou as teclas esquerda/direita para navegar entre as páginas. Clique no botão de som para alternar o áudio das viradas.
